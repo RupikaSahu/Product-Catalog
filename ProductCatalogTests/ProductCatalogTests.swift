@@ -11,24 +11,30 @@ import XCTest
 
 class ProductCatalogTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Checking string Interpolayion
+        let ratingCount = "(" + "\(10)" + ")"
+        XCTAssert(ratingCount == "(10)", "Sucess")
+        XCTAssertTrue(ratingCount != "10", "Succes")
+        
+        // Checking initial value of Products. Checking Nil
+        let products = ProductViewModel().products
+        XCTAssertNil(products)
+        
+        // Checking NSTextAttachment initialization
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(named: "rating")!
+        XCTAssertTrue(attachment.image != nil, "Sucess")
+        
+        let attach = NSTextAttachment(image: UIImage(named: "rating")!)
+        XCTAssertTrue(attach.image == nil, "Sucess")
+        XCTAssertNotNil(attach)
+        
+        // Checking ternary operator
+        let a = "a"
+        let x = a == "x" ? "x" : "a"
+        let y = a == x ? "y" : "x"
+        XCTAssertEqual(a, x, "Success")
+        XCTAssertNotEqual(a, y, "Sucess")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -7,18 +7,113 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProductTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var productBadgeLabel: UILabel!
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productStrikeOffPriceLabel: UILabel!
+    @IBOutlet weak var productRatingLabel: UILabel!
+    @IBOutlet weak var productRatingCountLabel: UILabel!
+    @IBOutlet weak var productDeliveryImageView: UIImageView!
+    @IBOutlet weak var productNoOfOffersLabel: UILabel!
+    @IBOutlet weak var addToBagButton: UIButton!
+    
+    var showAlert: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        productBadgeLabel.layer.cornerRadius = 3
+        productBadgeLabel.layer.masksToBounds = true
+        addToBagButton.layer.cornerRadius = 5
+        addToBagButton.layer.masksToBounds = true
     }
     
+    @IBAction func didTapOnAddToBagButton(_ sender: Any) {
+        self.showAlert?()
+    }
+    
+    func customizeCell(product: Product) {
+        if let badge = product.badge?.merchantBadge, badge.lowercased() != "none" {
+            productBadgeLabel.isHidden = false
+            productBadgeLabel.text = " " + badge + " "
+        } else {
+            productBadgeLabel.isHidden = true
+        }
+        
+        productImageView.sd_setImage(with: URL(string: product.images?[0] ?? ""), placeholderImage: UIImage(named: "phonePlaceholder"), options: .allowInvalidSSLCertificates, completed: nil)
+        productNameLabel.text = product.name ?? "Samsung"
+        
+        //Info: Instead of minimum price, Need to add other price to show price range, code is written and commented at the end of the file as not sure about the minimum price.
+        if let price = product.price?.priceDisplay {
+            productPriceLabel.text = price
+        } else {
+            productPriceLabel.text = product.price?.offerPriceDisplay
+        }
+
+        if let strikeThroughPrice = product.price?.strikeThroughPriceDisplay {
+            let attributedStrikeOffText = NSMutableAttributedString()
+            attributedStrikeOffText.append(Constant.getAttributedStrikeOffText(withText: strikeThroughPrice, color: .battleshipGray))
+            if let discount = product.price?.discount, discount > 0 {
+                attributedStrikeOffText.append(Constant.getAttributedLargeText(withText: " " + "\(discount)" + "% OFF", color: UIColor.red))
+            }
+            productStrikeOffPriceLabel.attributedText = attributedStrikeOffText
+        } else {
+            productStrikeOffPriceLabel.text = nil
+        }
+        
+        if let rating = product.review?.rating, rating > 0 {
+            let attributedRatingText = NSMutableAttributedString(string: "")
+            
+            let yellowStarAttachment = NSTextAttachment()
+            yellowStarAttachment.image = UIImage(named: "rating")!
+            yellowStarAttachment.bounds = CGRect(x: 0.0, y: -2.5, width: 16.0, height: 16.0)
+            
+            let grayStarAttachment = NSTextAttachment()
+            grayStarAttachment.image = UIImage(named: "ratingGray")!
+            grayStarAttachment.bounds = CGRect(x: 0.0, y: -2.5, width: 16.0, height: 16.0)
+            
+            let remainingRating = 5 - rating
+            
+            for _ in 0..<rating {
+                attributedRatingText.append(NSAttributedString(attachment: yellowStarAttachment))
+                attributedRatingText.append(NSAttributedString(string: " "))
+            }
+            for i in 0..<remainingRating {
+                attributedRatingText.append(NSAttributedString(attachment: grayStarAttachment))
+                if i + 1 != remainingRating {
+                    attributedRatingText.append(NSAttributedString(string: " "))
+                }
+            }
+            productRatingLabel.attributedText = attributedRatingText
+            if let noOfRatings = product.review?.count, noOfRatings > 0 {
+                productRatingCountLabel.text = "(" + String(noOfRatings) + ")"
+            }
+        } else {
+            productRatingLabel.text = nil
+            productRatingCountLabel.text = nil
+        }
+        
+        if let offeringsCount = product.otherOfferings?.count, offeringsCount > 0, let price = product.otherOfferings?.startPrice {
+            let attributedOfferText = NSMutableAttributedString()
+            attributedOfferText.append(Constant.getAttributedSmallText(withText: String(offeringsCount) + (offeringsCount > 1 ? " offers are" : " offer is") + " availble with price ", color: .darkGray))
+            attributedOfferText.append(Constant.getAttributedLargeText(withText: price, color: .charcoalGray))
+            productNoOfOffersLabel.attributedText = attributedOfferText
+        } else {
+            productNoOfOffersLabel.text = nil
+        }
+        
+        productDeliveryImageView.image = (product.tags?.contains("BLIBLI_SHIPPING") ?? false) ? UIImage(named: "delivery") : nil
+    }
 }
+
+//        if let minPrice = product.price?.minPrice, let maxPrice = product.price?.priceDisplay {
+//            productPriceLabel.text = "Rp " + String(minPrice) + " - " + String(maxPrice)
+//        } else if let minPrice = product.price?.minPrice {
+//            productPriceLabel.text = String(minPrice)
+//        } else {
+//            productPriceLabel.text = String(describing: product.price?.priceDisplay ?? product.price?.offerPriceDisplay)
+//        }
