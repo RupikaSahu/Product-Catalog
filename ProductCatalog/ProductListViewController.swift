@@ -69,7 +69,7 @@ class ProductListViewController: UIViewController {
     }
 
     @IBAction func didTapOnBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.selectedIndex = 0
     }
 }
 

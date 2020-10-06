@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hVR-qv-OZx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6E-RH-eq5">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,22 +7,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="AzG-e2-V7L">
+        <!--Tab Bar Controller-->
+        <scene sceneID="cmq-hF-ngh">
             <objects>
-                <navigationController navigationBarHidden="YES" id="hVR-qv-OZx" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wE4-lw-knW">
+                <tabBarController id="s6E-RH-eq5" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bhS-EH-cOl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="R06-vB-uRK"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Yze-lh-0fB"/>
+                        <segue destination="GTg-af-bvJ" kind="relationship" relationship="viewControllers" id="Cr5-jb-qPh"/>
+                        <segue destination="iLA-6a-rfW" kind="relationship" relationship="viewControllers" id="ott-Rg-AbN"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Kz-dT-IsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L22-eX-akm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-738" y="106"/>
+            <point key="canvasLocation" x="-1345" y="-74"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="ProductCatalog" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,7 +79,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for the products here..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6M-lF-yid">
-                                <rect key="frame" x="20" y="283" width="335" height="27.5"/>
+                                <rect key="frame" x="20" y="258.5" width="335" height="27.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
                                 <color key="textColor" red="0.03882170377" green="0.40587257030000001" blue="0.82673373289999996" alpha="0.79738334759999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -91,7 +95,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy Shopping :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebP-hK-RLY">
-                                <rect key="frame" x="20" y="320.5" width="335" height="26.5"/>
+                                <rect key="frame" x="20" y="296" width="335" height="26.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" red="0.03882170377" green="0.40587257030000001" blue="0.82673373289999996" alpha="0.79738334759999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -114,6 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="rBh-R7-KV8"/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="kiU-Ad-QIb"/>
                     <connections>
                         <outlet property="productSearchBar" destination="hWY-O5-zEf" id="NZh-WX-BrI"/>
@@ -121,9 +126,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
+            <point key="canvasLocation" x="-538" y="-74"/>
         </scene>
-        <!--Product List View Controller-->
+        <!--List-->
         <scene sceneID="aZU-kY-TF2">
             <objects>
                 <viewController storyboardIdentifier="productsVC" id="GTg-af-bvJ" customClass="ProductListViewController" customModule="ProductCatalog" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,7 +210,6 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qf5-JZ-ykE">
                                 <rect key="frame" x="0.0" y="80" width="375" height="587"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -221,6 +225,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sug-tM-BZV"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="6nM-Qw-V64"/>
                     <connections>
                         <outlet property="backButton" destination="Rqh-kR-gUg" id="iF1-S2-AER"/>
                         <outlet property="moreInfoImageView" destination="cHs-Vd-6mm" id="n9r-A5-EQY"/>
@@ -232,13 +237,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eq-0d-oos" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797.60000000000002" y="105.69715142428787"/>
+            <point key="canvasLocation" x="-1346" y="660"/>
+        </scene>
+        <!--Grid-->
+        <scene sceneID="mq8-e0-ykQ">
+            <objects>
+                <viewController id="iLA-6a-rfW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dEX-Gp-WCu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="wF1-yw-ZCD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Grid" image="square.grid.2x2" catalog="system" id="Kyc-mU-mUa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGj-uf-Xvr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-538" y="660"/>
         </scene>
     </scenes>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
     </resources>
