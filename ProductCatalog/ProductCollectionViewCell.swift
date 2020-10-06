@@ -1,16 +1,15 @@
 //
-//  ProductTableViewCell.swift
+//  ProductCollectionViewCell.swift
 //  ProductCatalog
 //
-//  Created by Rupika Sahu on 28/09/20.
+//  Created by Rupika Sahu on 06/10/20.
 //  Copyright © 2020 Rupika Sahu. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
 
-class ProductTableViewCell: UITableViewCell {
-    
+class ProductCollectionViewCell: UICollectionViewCell {
+
     @IBOutlet weak var productBadgeLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
@@ -94,12 +93,5 @@ class ProductTableViewCell: UITableViewCell {
         
         productDeliveryImageView.image = (product.tags?.contains("BLIBLI_SHIPPING") ?? false) ? UIImage(named: "delivery") : nil
     }
-}
 
-//        if let minPrice = product.price?.minPrice, let maxPrice = product.price?.priceDisplay {
-//            productPriceLabel.text = "Rp " + String(minPrice) + " - " + String(maxPrice)
-//        } else if let minPrice = product.price?.minPrice {
-//            productPriceLabel.text = String(minPrice)
-//        } else {
-//            productPriceLabel.text = String(describing: product.price?.priceDisplay ?? product.price?.offerPriceDisplay)
-//        }
+}

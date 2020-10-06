@@ -17,6 +17,8 @@ struct Constant {
     static let productAddedMessage = "Product added to cart"
     static let error = "Error!!!"
     static let failed = "Failed..."
+    static let percent = "% OFF"
+    static let availableWithPrice = " availble with price "
     
     static func getAttributedSmallText(withText text: String, color: UIColor) -> NSAttributedString {
         return NSAttributedString(string: text, attributes: [NSAttributedString.Key.strikethroughColor: color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0, weight: .regular), NSAttributedString.Key.foregroundColor: color])
@@ -29,6 +31,17 @@ struct Constant {
     static func getAttributedStrikeOffText(withText text: String, color: UIColor) -> NSAttributedString {
         return NSAttributedString(string: text, attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.strikethroughColor: color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0, weight: .medium), NSAttributedString.Key.foregroundColor: color])
     }
+    
+    static func getAttachement(withImage image: String) -> NSTextAttachment {
+        let starAttachment = NSTextAttachment()
+        starAttachment.image = UIImage(named: image)!
+        starAttachment.bounds = CGRect(x: 0.0, y: -2.5, width: 16.0, height: 16.0)
+        return starAttachment
+    }
+}
+
+extension Constant {
+    
 }
 
 extension UIViewController {
@@ -50,6 +63,12 @@ extension UIDevice {
 }
 
 extension UITableViewCell {
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UICollectionViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }

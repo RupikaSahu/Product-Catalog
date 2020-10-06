@@ -20,6 +20,9 @@
 		0AE047932521BE2F00322AD0 /* ProductCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE047922521BE2F00322AD0 /* ProductCatalogTests.swift */; };
 		0AE0479F2521C0C200322AD0 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE0479D2521C0C200322AD0 /* ProductTableViewCell.swift */; };
 		0AE047A02521C0C200322AD0 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AE0479E2521C0C200322AD0 /* ProductTableViewCell.xib */; };
+		0AEAD7D5252CE15000AA608C /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAD7D3252CE15000AA608C /* ProductCollectionViewCell.swift */; };
+		0AEAD7D6252CE15000AA608C /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEAD7D4252CE15000AA608C /* ProductCollectionViewCell.xib */; };
+		0AEAD7D8252CE26600AA608C /* ProductGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEAD7D7252CE26600AA608C /* ProductGridViewController.swift */; };
 		0AF93F482523AE9800BC23EB /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF93F472523AE9800BC23EB /* Spinner.swift */; };
 		9A1284B3E4845835040C9068 /* Pods_ProductCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721E9BD1F94A54D76E5C3974 /* Pods_ProductCatalog.framework */; };
 		B0253A39227161D62EE238B5 /* Pods_ProductCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E55B92F5B98F97D92D29ED /* Pods_ProductCatalogTests.framework */; };
@@ -53,6 +56,9 @@
 		0AE047942521BE2F00322AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AE0479D2521C0C200322AD0 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		0AE0479E2521C0C200322AD0 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
+		0AEAD7D3252CE15000AA608C /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AEAD7D4252CE15000AA608C /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		0AEAD7D7252CE26600AA608C /* ProductGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGridViewController.swift; sourceTree = "<group>"; };
 		0AF93F472523AE9800BC23EB /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		1B44BF43D019290B925155E3 /* Pods-ProductCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductCatalogTests.release.xcconfig"; path = "Target Support Files/Pods-ProductCatalogTests/Pods-ProductCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		4BF98CC86D31B141C0B4A8C1 /* Pods-ProductCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductCatalogTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductCatalogTests/Pods-ProductCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,8 +115,11 @@
 				0AE0477D2521BE2C00322AD0 /* SceneDelegate.swift */,
 				0AE0477F2521BE2C00322AD0 /* SearchViewController.swift */,
 				0ACDF4E22521FAA100DE5186 /* ProductListViewController.swift */,
+				0AEAD7D7252CE26600AA608C /* ProductGridViewController.swift */,
 				0AE0479D2521C0C200322AD0 /* ProductTableViewCell.swift */,
 				0AE0479E2521C0C200322AD0 /* ProductTableViewCell.xib */,
+				0AEAD7D3252CE15000AA608C /* ProductCollectionViewCell.swift */,
+				0AEAD7D4252CE15000AA608C /* ProductCollectionViewCell.xib */,
 				0ACDF4E62521FB2300DE5186 /* ProductModel.swift */,
 				0ACDF4E42521FB1000DE5186 /* ProductViewModel.swift */,
 				0A3AB502252216B8001804EC /* Constant.swift */,
@@ -238,6 +247,7 @@
 			files = (
 				0AE047882521BE2E00322AD0 /* LaunchScreen.storyboard in Resources */,
 				0AE047A02521C0C200322AD0 /* ProductTableViewCell.xib in Resources */,
+				0AEAD7D6252CE15000AA608C /* ProductCollectionViewCell.xib in Resources */,
 				0AE047852521BE2E00322AD0 /* Assets.xcassets in Resources */,
 				0A3AB50525222632001804EC /* Main.storyboard in Resources */,
 			);
@@ -321,8 +331,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEAD7D8252CE26600AA608C /* ProductGridViewController.swift in Sources */,
 				0AE047802521BE2C00322AD0 /* SearchViewController.swift in Sources */,
 				0AF93F482523AE9800BC23EB /* Spinner.swift in Sources */,
+				0AEAD7D5252CE15000AA608C /* ProductCollectionViewCell.swift in Sources */,
 				0AE0479F2521C0C200322AD0 /* ProductTableViewCell.swift in Sources */,
 				0ACDF4E52521FB1000DE5186 /* ProductViewModel.swift in Sources */,
 				0A3AB503252216B8001804EC /* Constant.swift in Sources */,

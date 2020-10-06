@@ -1,20 +1,20 @@
 //
-//  ProductListViewController.swift
+//  ProductGridViewController.swift
 //  ProductCatalog
 //
-//  Created by Rupika Sahu on 28/09/20.
+//  Created by Rupika Sahu on 06/10/20.
 //  Copyright © 2020 Rupika Sahu. All rights reserved.
 //
 
 import UIKit
 
-class ProductListViewController: UIViewController {
+class ProductGridViewController: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var navigationCountLabel: UILabel!
     @IBOutlet weak var moreInfoImageView: UIImageView!
-    @IBOutlet weak var productsTableView: UITableView!
+    @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var navigationViewHeightConstraint: NSLayoutConstraint!
     
     var productViewModel = ProductViewModel()
@@ -36,9 +36,9 @@ class ProductListViewController: UIViewController {
         if UIDevice.current.hasTopNotch {
             navigationViewHeightConstraint.constant += 24
         }
-        self.productsTableView.dataSource = self
-        self.productsTableView.delegate = self
-        self.productsTableView.register(UINib(nibName: ProductTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: ProductTableViewCell.reuseIdentifier)
+        self.productsCollectionView.dataSource = self
+        self.productsCollectionView.delegate = self
+        self.productsCollectionView.register(UINib(nibName: ProductCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.reuseIdentifier)
     }
     
     func loadProductList(isPaginating: Bool = false, showLoading: Bool = true) {
@@ -50,7 +50,7 @@ class ProductListViewController: UIViewController {
             if status {
                 DispatchQueue.main.async {
                     self.navigationCountLabel.text = String(self.productViewModel.products?.count ?? 0) + " search results"
-                    self.productsTableView.reloadData()
+                    self.productsCollectionView.reloadData()
                 }
             } else {
                 self.showAlert(withTitle: Constant.error, message: message ?? Constant.failed) { _ in
@@ -63,7 +63,7 @@ class ProductListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
+       
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
@@ -73,32 +73,46 @@ class ProductListViewController: UIViewController {
     }
 }
 
-extension ProductListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ProductGridViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.productViewModel.products != nil ? (
-            self.productViewModel.products?.count ?? 0) : 0
+        self.productViewModel.products?.count ?? 0) : 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = productsTableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath) as? ProductTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseIdentifier, for: indexPath) as? ProductCollectionViewCell
         if let product = self.productViewModel.products?[indexPath.row] {
             cell?.customizeCell(product: product)
             cell?.showAlert = {
                 self.showAlert(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage)
             }
         }
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 }
 
-extension ProductListViewController: UITableViewDelegate {
+extension ProductGridViewController: UICollectionViewDelegate {
     // For pagination/infinte scrolling
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollViewYoffset = scrollView.contentOffset.y
-        if scrollViewYoffset > productsTableView.contentSize.height - scrollView.frame.size.height - 150 {
+        if scrollViewYoffset > productsCollectionView.contentSize.height - scrollView.frame.size.height - 150 {
             if !self.productViewModel.isPaginating {
                 loadProductList(isPaginating: true, showLoading: false)
             }
         }
+    }
+}
+
+extension ProductGridViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.productsCollectionView.frame.width/2.0 - 16.0, height: 400)
     }
 }
