@@ -19,7 +19,7 @@ class ProductGridViewController: UIViewController {
     @IBOutlet weak var navigationViewHeightConstraint: NSLayoutConstraint!
     
     var productViewModel = ProductViewModel()
-    var searchText: String = "samsung"
+    static var searchText: String = "Samsung"
     var offSet: CGFloat = 80.0
     var bagCount = 0
 
@@ -30,7 +30,7 @@ class ProductGridViewController: UIViewController {
     }
     
     func setupUI() {
-        self.navigationTitleLabel.text = self.searchText
+        self.navigationTitleLabel.text = ProductListViewController.searchText
         self.backButton.imageView?.contentMode = .scaleAspectFit
         self.backButton.contentVerticalAlignment = .fill
         self.backButton.contentHorizontalAlignment = .fill
@@ -44,7 +44,7 @@ class ProductGridViewController: UIViewController {
         self.productsCollectionView.register(UINib(nibName: ProductCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: ProductCollectionViewCell.reuseIdentifier)
     }
     
-    func loadProductList(isPaginating: Bool = false, showLoading: Bool = true) {
+    func loadProductList(showLoading: Bool = true) {
         if showLoading {
             self.showSpinner(withYOffset: &offSet)
         }
@@ -52,7 +52,7 @@ class ProductGridViewController: UIViewController {
             self.removeSpinner()
             if status {
                 DispatchQueue.main.async {
-                    self.navigationCountLabel.text = String(self.productViewModel.products?.count ?? 0) + " search results"
+                    self.navigationCountLabel.text = String(self.productViewModel.products?.count ?? 0) + Constant.searchResults
                     self.productsCollectionView.reloadData()
                 }
             } else {
@@ -91,7 +91,7 @@ extension ProductGridViewController: UICollectionViewDataSource {
         if let product = self.productViewModel.products?[indexPath.row] {
             cell?.customizeCell(product: product)
             cell?.addToBag = {
-                self.showAlert(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage, okAction: { _ in
+                self.showAlertToAddProducts(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage, okAction: { _ in
                     self.bagCount += 1
                     self.bagCountLabel.text = String(self.bagCount)
                     self.bagCountLabel.isHidden = false
@@ -107,8 +107,8 @@ extension ProductGridViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollViewYoffset = scrollView.contentOffset.y
         if scrollViewYoffset > productsCollectionView.contentSize.height - scrollView.frame.size.height - 150 {
-            if !self.productViewModel.isPaginating {
-                loadProductList(isPaginating: true, showLoading: false)
+            if !ProductViewModel.isPaginating {
+                loadProductList(showLoading: false)
             }
         }
     }

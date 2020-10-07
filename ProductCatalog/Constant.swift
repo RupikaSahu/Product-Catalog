@@ -12,9 +12,11 @@ struct Constant {
     static let productSearchUrl = "https://www.blibli.com/backend/search/products?searchTerm=samsung&start=0&itemPerPage=24"
     static let emptyTextTitle = "No Text !!!"
     static let emptyTextMessage = "Please enter the prouduct name"
+    static let searchResults = " search results"
     static let ok = "OK"
-    static let productAddedTitle = "Product Added!!!"
-    static let productAddedMessage = "Product added to cart"
+    static let cancel = "Cancel"
+    static let productAddedTitle = "Product goes to Cart!!!"
+    static let productAddedMessage = "Adding prodcut to cart"
     static let error = "Error!!!"
     static let failed = "Failed..."
     static let percent = "% OFF"
@@ -50,6 +52,13 @@ extension UIViewController {
         alertVC.addAction(UIAlertAction(title: Constant.ok, style: .cancel, handler: okAction))
         self.present(alertVC, animated: true, completion: nil)
     }
+    
+    func showAlertToAddProducts(withTitle title: String, message: String, okAction: ((UIAlertAction) -> Void)? = nil, cancelAction: ((UIAlertAction) -> Void)? = nil) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: Constant.ok, style: .cancel, handler: okAction))
+        alertVC.addAction(UIAlertAction(title: Constant.cancel, style: .destructive, handler: cancelAction))
+        self.present(alertVC, animated: true, completion: nil)
+    }
 }
 
 extension UIDevice {
@@ -78,4 +87,3 @@ extension UIColor {
     static let battleshipGray = UIColor(red: 109/255, green: 120/255, blue: 137/255, alpha: 1.0)
     static let charcoalGray = UIColor(red: 62/255, green: 66/255, blue: 77/255, alpha: 1.0)
 }
-
