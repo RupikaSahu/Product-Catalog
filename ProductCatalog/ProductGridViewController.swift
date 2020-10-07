@@ -18,7 +18,7 @@ class ProductGridViewController: UIViewController {
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var navigationViewHeightConstraint: NSLayoutConstraint!
     
-    var productViewModel = ProductViewModel()
+    let productViewModel = ProductViewModel()
     static var searchText: String = "Samsung"
     var offSet: CGFloat = 80.0
     var bagCount = 0
@@ -124,7 +124,7 @@ extension ProductGridViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ((self.productsCollectionView.bounds.width - 5)/2.0) , height: 380)
+        return CGSize(width: ((self.productsCollectionView.bounds.width - 2)/2.0) , height: 380)
     }
     
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, insetForSectionAt _: Int) -> UIEdgeInsets {

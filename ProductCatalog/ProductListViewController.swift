@@ -18,7 +18,7 @@ class ProductListViewController: UIViewController {
     @IBOutlet weak var productsTableView: UITableView!
     @IBOutlet weak var navigationViewHeightConstraint: NSLayoutConstraint!
     
-    var productViewModel = ProductViewModel()
+    let productViewModel = ProductViewModel()
     static var searchText: String = "Samsung"
     var offSet: CGFloat = 80.0
     var bagCount = 0
