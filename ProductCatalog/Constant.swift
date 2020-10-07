@@ -35,7 +35,7 @@ struct Constant {
     static func getAttachement(withImage image: String) -> NSTextAttachment {
         let starAttachment = NSTextAttachment()
         starAttachment.image = UIImage(named: image)!
-        starAttachment.bounds = CGRect(x: 0.0, y: -2.5, width: 16.0, height: 16.0)
+        starAttachment.bounds = CGRect(x: 0.0, y: -1.5, width: 12.0, height: 12.0)
         return starAttachment
     }
 }

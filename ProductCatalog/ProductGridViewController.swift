@@ -71,6 +71,10 @@ class ProductGridViewController: UIViewController {
     @IBAction func didTapOnBackButton(_ sender: Any) {
         self.tabBarController?.selectedIndex = 0
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
 }
 
 extension ProductGridViewController: UICollectionViewDataSource {
@@ -105,14 +109,18 @@ extension ProductGridViewController: UICollectionViewDelegate {
 
 extension ProductGridViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 30
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.productsCollectionView.frame.width/2.0 - 16.0, height: 400)
+        return CGSize(width: ((self.productsCollectionView.bounds.width - 5)/2.0) , height: 380)
+    }
+    
+    func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, insetForSectionAt _: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
