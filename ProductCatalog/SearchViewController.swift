@@ -45,8 +45,9 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func showProductsListVC() {
-        let productListVC = (UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "productsVC") as? ProductListViewController)
-        productListVC?.searchText = productSearchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "samsung"
-        self.navigationController?.pushViewController(productListVC ?? UIViewController(), animated: true)
+        self.tabBarController?.selectedIndex = 1
+//        let productListVC = (UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "productsVC") as? ProductListViewController)
+//        productListVC?.searchText = productSearchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "samsung"
+//        self.navigationController?.pushViewController(productListVC ?? UIViewController(), animated: true)
     }
 }

@@ -14,12 +14,14 @@ class ProductGridViewController: UIViewController {
     @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var navigationCountLabel: UILabel!
     @IBOutlet weak var moreInfoImageView: UIImageView!
+    @IBOutlet weak var bagCountLabel: UILabel!
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var navigationViewHeightConstraint: NSLayoutConstraint!
     
     var productViewModel = ProductViewModel()
     var searchText: String = "samsung"
     var offSet: CGFloat = 80.0
+    var bagCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ class ProductGridViewController: UIViewController {
         self.backButton.imageView?.contentMode = .scaleAspectFit
         self.backButton.contentVerticalAlignment = .fill
         self.backButton.contentHorizontalAlignment = .fill
+        self.bagCountLabel.isHidden = true
         self.moreInfoImageView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double.pi/2))
         if UIDevice.current.hasTopNotch {
             navigationViewHeightConstraint.constant += 24
@@ -87,8 +90,12 @@ extension ProductGridViewController: UICollectionViewDataSource {
         let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseIdentifier, for: indexPath) as? ProductCollectionViewCell
         if let product = self.productViewModel.products?[indexPath.row] {
             cell?.customizeCell(product: product)
-            cell?.showAlert = {
-                self.showAlert(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage)
+            cell?.addToBag = {
+                self.showAlert(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage, okAction: { _ in
+                    self.bagCount += 1
+                    self.bagCountLabel.text = String(self.bagCount)
+                    self.bagCountLabel.isHidden = false
+                })
             }
         }
         return cell ?? UICollectionViewCell()

@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -188,10 +187,36 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-ae-xjD">
+                                        <rect key="frame" x="316" y="34" width="16" height="16"/>
+                                        <color key="backgroundColor" red="1" green="0.84987157530000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="YHp-bE-b3y"/>
+                                            <constraint firstAttribute="height" constant="16" id="uxb-aI-2G6"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="2">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.03882170377" green="0.40587257030000001" blue="0.82673373289999996" alpha="0.79738334759999996" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cHs-Vd-6mm" secondAttribute="trailing" constant="10" id="7gv-mP-NjE"/>
+                                    <constraint firstItem="4eF-ae-xjD" firstAttribute="bottom" secondItem="1hU-xZ-LJf" secondAttribute="centerY" id="8fa-Qn-xGW"/>
                                     <constraint firstItem="orv-qo-f2P" firstAttribute="leading" secondItem="Rqh-kR-gUg" secondAttribute="trailing" constant="10" id="J9S-aD-bLO"/>
                                     <constraint firstItem="ZuY-1H-jY9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i2u-qN-TMS" secondAttribute="top" constant="5" id="Lt2-Vn-nur"/>
                                     <constraint firstItem="7rM-Py-npX" firstAttribute="leading" secondItem="orv-qo-f2P" secondAttribute="trailing" constant="8" id="Tfl-ZR-X4D"/>
@@ -206,6 +231,7 @@
                                     <constraint firstItem="7rM-Py-npX" firstAttribute="centerY" secondItem="1hU-xZ-LJf" secondAttribute="centerY" id="o9l-yu-Cif"/>
                                     <constraint firstAttribute="bottom" secondItem="orv-qo-f2P" secondAttribute="bottom" constant="10" id="pfp-UK-Ofl"/>
                                     <constraint firstItem="ZuY-1H-jY9" firstAttribute="leading" secondItem="Rqh-kR-gUg" secondAttribute="trailing" constant="15" id="sPT-JW-hpT"/>
+                                    <constraint firstItem="4eF-ae-xjD" firstAttribute="trailing" secondItem="1hU-xZ-LJf" secondAttribute="trailing" id="trc-TX-wVX"/>
                                     <constraint firstAttribute="height" constant="80" id="x0h-Y3-iYq"/>
                                 </constraints>
                             </view>
@@ -230,6 +256,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="6nM-Qw-V64"/>
                     <connections>
                         <outlet property="backButton" destination="Rqh-kR-gUg" id="iF1-S2-AER"/>
+                        <outlet property="bagCountLabel" destination="4eF-ae-xjD" id="fsE-i9-KyO"/>
                         <outlet property="moreInfoImageView" destination="cHs-Vd-6mm" id="n9r-A5-EQY"/>
                         <outlet property="navigationCountLabel" destination="orv-qo-f2P" id="UdP-85-wVt"/>
                         <outlet property="navigationTitleLabel" destination="ZuY-1H-jY9" id="mR0-1B-Jna"/>
@@ -300,6 +327,31 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfy-vn-5YO">
+                                        <rect key="frame" x="316" y="34" width="16" height="16"/>
+                                        <color key="backgroundColor" red="1" green="0.84987157530000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Dah-gJ-WEn"/>
+                                            <constraint firstAttribute="width" constant="16" id="rfg-71-vH9"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="2">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.03882170377" green="0.40587257030000001" blue="0.82673373289999996" alpha="0.79738334759999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -310,8 +362,10 @@
                                     <constraint firstItem="Xz5-LP-q3K" firstAttribute="top" secondItem="rBf-TP-UV6" secondAttribute="bottom" constant="5" id="Fq2-eH-NM0"/>
                                     <constraint firstAttribute="bottom" secondItem="Xz5-LP-q3K" secondAttribute="bottom" constant="10" id="Glt-XX-Bmv"/>
                                     <constraint firstAttribute="height" constant="80" id="JMd-Vm-6dH"/>
+                                    <constraint firstItem="dfy-vn-5YO" firstAttribute="bottom" secondItem="Gxb-Cl-E3v" secondAttribute="top" constant="15" id="TXE-Rl-Vru"/>
                                     <constraint firstItem="fMM-gU-uvd" firstAttribute="centerY" secondItem="Gxb-Cl-E3v" secondAttribute="centerY" id="UG9-LA-xM1"/>
                                     <constraint firstItem="rBf-TP-UV6" firstAttribute="leading" secondItem="1UU-xv-M6k" secondAttribute="trailing" constant="15" id="gPR-gM-emS"/>
+                                    <constraint firstItem="dfy-vn-5YO" firstAttribute="trailing" secondItem="Gxb-Cl-E3v" secondAttribute="trailing" id="hS6-Az-clI"/>
                                     <constraint firstItem="rBf-TP-UV6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="t7z-nl-Gi0" secondAttribute="top" constant="5" id="iEG-C5-Org"/>
                                     <constraint firstItem="fMM-gU-uvd" firstAttribute="leading" secondItem="rBf-TP-UV6" secondAttribute="trailing" priority="999" constant="8" id="lni-5B-yPY"/>
                                     <constraint firstItem="fMM-gU-uvd" firstAttribute="centerY" secondItem="1UU-xv-M6k" secondAttribute="centerY" id="rcm-Uc-nJg"/>
@@ -330,16 +384,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="q5D-d4-lsO">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="380"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KKo-I2-Jq2">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="380"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -357,6 +402,7 @@
                     <tabBarItem key="tabBarItem" title="Grid" image="square.grid.2x2" catalog="system" id="Kyc-mU-mUa"/>
                     <connections>
                         <outlet property="backButton" destination="1UU-xv-M6k" id="zW0-cn-2O9"/>
+                        <outlet property="bagCountLabel" destination="dfy-vn-5YO" id="Qe3-9K-Drj"/>
                         <outlet property="moreInfoImageView" destination="sI9-tL-HNY" id="uRb-Le-gaP"/>
                         <outlet property="navigationCountLabel" destination="Xz5-LP-q3K" id="o0S-63-VM8"/>
                         <outlet property="navigationTitleLabel" destination="rBf-TP-UV6" id="52q-ib-txO"/>

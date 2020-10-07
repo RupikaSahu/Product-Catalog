@@ -21,7 +21,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productNoOfOffersLabel: UILabel!
     @IBOutlet weak var addToBagButton: UIButton!
     
-    var showAlert: (() -> Void)?
+    var addToBag: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +32,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func didTapOnAddToBagButton(_ sender: Any) {
-        self.showAlert?()
+        self.addToBag?()
     }
     
     func customizeCell(product: Product) {
@@ -93,5 +93,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         productDeliveryImageView.image = (product.tags?.contains("BLIBLI_SHIPPING") ?? false) ? UIImage(named: "delivery") : nil
     }
-
 }
+
+//        if let minPrice = product.price?.minPrice, let maxPrice = product.price?.priceDisplay {
+//            productPriceLabel.text = "Rp " + String(minPrice) + " - " + String(maxPrice)
+//        } else if let minPrice = product.price?.minPrice {
+//            productPriceLabel.text = String(minPrice)
+//        } else {
+//            productPriceLabel.text = String(describing: product.price?.priceDisplay ?? product.price?.offerPriceDisplay)
+//        }

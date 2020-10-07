@@ -22,7 +22,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var productNoOfOffersLabel: UILabel!
     @IBOutlet weak var addToBagButton: UIButton!
     
-    var showAlert: (() -> Void)?
+    var addToBag: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +33,7 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapOnAddToBagButton(_ sender: Any) {
-        self.showAlert?()
+        self.addToBag?()
     }
     
     func customizeCell(product: Product) {
@@ -85,7 +85,7 @@ class ProductTableViewCell: UITableViewCell {
         
         if let offeringsCount = product.otherOfferings?.count, offeringsCount > 0, let price = product.otherOfferings?.startPrice {
             let attributedOfferText = NSMutableAttributedString()
-            attributedOfferText.append(Constant.getAttributedSmallText(withText: String(offeringsCount) + (offeringsCount > 1 ? " offers are" : " offer is") + Constant.availableWithPrice, color: .darkGray))
+            attributedOfferText.append(Constant.getAttributedSmallText(withText: String(offeringsCount) + (offeringsCount > 1 ? Constant.offersAre : Constant.offerIs) + Constant.availableWithPrice, color: .darkGray))
             attributedOfferText.append(Constant.getAttributedLargeText(withText: price, color: .charcoalGray))
             productNoOfOffersLabel.attributedText = attributedOfferText
         } else {

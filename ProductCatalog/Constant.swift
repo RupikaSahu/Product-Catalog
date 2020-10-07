@@ -18,8 +18,12 @@ struct Constant {
     static let error = "Error!!!"
     static let failed = "Failed..."
     static let percent = "% OFF"
+    static let offersAre = " offers are"
+    static let offerIs = " offer is"
     static let availableWithPrice = " availble with price "
-    
+}
+
+extension Constant {
     static func getAttributedSmallText(withText text: String, color: UIColor) -> NSAttributedString {
         return NSAttributedString(string: text, attributes: [NSAttributedString.Key.strikethroughColor: color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0, weight: .regular), NSAttributedString.Key.foregroundColor: color])
     }
@@ -38,10 +42,6 @@ struct Constant {
         starAttachment.bounds = CGRect(x: 0.0, y: -1.5, width: 12.0, height: 12.0)
         return starAttachment
     }
-}
-
-extension Constant {
-    
 }
 
 extension UIViewController {
