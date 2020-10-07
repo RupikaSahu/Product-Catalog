@@ -16,7 +16,7 @@ class ProductViewModel {
     
     func getSearchResults(for text: String = "samsung", completion: ((Bool, [Product]?, String?) -> Void)?) {
         ProductViewModel.isPaginating = true
-        Alamofire.request(Constant.productSearchUrl).validate().responseJSON { response in
+        Alamofire.request(AppURLS.productSearchUrl).validate().responseJSON { response in
             if let value = response.result.value as? [String: Any] {
                 if value["status"] as? String == "OK" || value["code"] as? Int == 200 {
                     if let data = value["data"] as? [String: Any] {

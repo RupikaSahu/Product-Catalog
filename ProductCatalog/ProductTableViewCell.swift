@@ -45,7 +45,7 @@ class ProductTableViewCell: UITableViewCell {
         }
         
         productImageView.sd_setImage(with: URL(string: product.images?[0] ?? ""), placeholderImage: UIImage(named: "phonePlaceholder"), options: .allowInvalidSSLCertificates, completed: nil)
-        productNameLabel.text = product.name ?? "Samsung"
+        productNameLabel.text = product.name ?? Constant.samsung
         
         //Instead of minimum price, need to add other price to show price range, code is written & commented at the end of the file as not sure about the minimum price.
         productPriceLabel.text = product.price?.priceDisplay ?? product.price?.offerPriceDisplay

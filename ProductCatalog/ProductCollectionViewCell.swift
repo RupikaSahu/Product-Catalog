@@ -44,7 +44,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         }
         
         productImageView.sd_setImage(with: URL(string: product.images?[0] ?? ""), placeholderImage: UIImage(named: "phonePlaceholder"), options: .allowInvalidSSLCertificates, completed: nil)
-        productNameLabel.text = product.name ?? "Samsung"
+        productNameLabel.text = product.name ?? Constant.samsung
         
         //Instead of minimum price, need to add other price to show price range, code is written & commented at the end of the file as not sure about the minimum price.
         productPriceLabel.text = product.price?.priceDisplay ?? product.price?.offerPriceDisplay
@@ -84,7 +84,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         if let offeringsCount = product.otherOfferings?.count, offeringsCount > 0, let price = product.otherOfferings?.startPrice {
             let attributedOfferText = NSMutableAttributedString()
-            attributedOfferText.append(Constant.getAttributedSmallText(withText: String(offeringsCount) + (offeringsCount > 1 ? " offers are" : " offer is") + Constant.availableWithPrice, color: .darkGray))
+            attributedOfferText.append(Constant.getAttributedSmallText(withText: String(offeringsCount) + (offeringsCount > 1 ? Constant.offersAre : Constant.offerIs) + Constant.availableWithPrice, color: .darkGray))
             attributedOfferText.append(Constant.getAttributedLargeText(withText: price, color: .charcoalGray))
             productNoOfOffersLabel.attributedText = attributedOfferText
         } else {

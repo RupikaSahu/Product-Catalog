@@ -19,7 +19,7 @@ class ProductGridViewController: UIViewController {
     @IBOutlet weak var navigationViewHeightConstraint: NSLayoutConstraint!
     
     let productViewModel = ProductViewModel()
-    static var searchText: String = "Samsung"
+    static var searchText: String = Constant.samsung
     var offSet: CGFloat = 80.0
     var bagCount = 0
 
@@ -37,7 +37,7 @@ class ProductGridViewController: UIViewController {
         self.bagCountLabel.isHidden = true
         self.moreInfoImageView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double.pi/2))
         if UIDevice.current.hasTopNotch {
-            navigationViewHeightConstraint.constant += 24
+            navigationViewHeightConstraint.constant += 44
         }
         self.productsCollectionView.dataSource = self
         self.productsCollectionView.delegate = self

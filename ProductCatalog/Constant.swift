@@ -8,21 +8,26 @@
 
 import UIKit
 
-struct Constant {
+struct AppURLS {
     static let productSearchUrl = "https://www.blibli.com/backend/search/products?searchTerm=samsung&start=0&itemPerPage=24"
-    static let emptyTextTitle = "No Text !!!"
-    static let emptyTextMessage = "Please enter the prouduct name"
-    static let searchResults = " search results"
+}
+
+struct Constant {
     static let ok = "OK"
     static let cancel = "Cancel"
-    static let productAddedTitle = "Product goes to Cart!!!"
-    static let productAddedMessage = "Adding prodcut to cart"
     static let error = "Error!!!"
     static let failed = "Failed..."
     static let percent = "% OFF"
-    static let offersAre = " offers are"
+    static let samsung = "Samsung"
     static let offerIs = " offer is"
+    static let offersAre = " offers are"
+    static let emptyTextTitle = "No Text !!!"
+    static let searchResults = " search results"
     static let availableWithPrice = " availble with price "
+    static let productAddedTitle = "Product goes to Cart!!!"
+    static let productAddedMessage = "Adding prodcut to cart"
+    static let emptyTextMessage = "Please enter the prouduct name"
+    
 }
 
 extension Constant {
