@@ -90,7 +90,7 @@ extension ProductGridViewController: UICollectionViewDataSource {
         let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reuseIdentifier, for: indexPath) as? ProductCollectionViewCell
         if let product = self.productViewModel.products?[indexPath.row] {
             cell?.customizeCell(product: product)
-            cell?.addToBag = {
+            cell?.addToBag = { [unowned self] in
                 self.showAlertToAddProducts(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage, okAction: { _ in
                     self.bagCount += 1
                     self.bagCountLabel.text = String(self.bagCount)

@@ -86,7 +86,7 @@ extension ProductListViewController: UITableViewDataSource {
         let cell = productsTableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.reuseIdentifier, for: indexPath) as? ProductTableViewCell
         if let product = self.productViewModel.products?[indexPath.row] {
             cell?.customizeCell(product: product)
-            cell?.addToBag = {
+            cell?.addToBag = { [unowned self] in
                 self.showAlertToAddProducts(withTitle: Constant.productAddedTitle, message: Constant.productAddedMessage, okAction: { _ in
                     self.bagCount += 1
                     self.bagCountLabel.text = String(self.bagCount)
